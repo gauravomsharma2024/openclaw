@@ -1,0 +1,41 @@
+{
+  "$schema": "https://docs.openclaw.ai/schema/openclaw.json",
+  "version": 1,
+  "agent": {
+    "model": "anthropic/claude-opus-4-7",
+    "fallbackModel": "anthropic/claude-sonnet-4-6",
+    "requireMention": true
+  },
+  "agents": {
+    "list": [
+      { "id": "claw",       "name": "Claw",             "soul": "./soul.md",                       "groupChat": { "mentionPatterns": ["@claw", "claw"],            "historyLimit": 50 } },
+      { "id": "webmaster",  "name": "Webmaster",        "soul": "./.agents/webmaster/soul.md",     "groupChat": { "mentionPatterns": ["@webmaster", "@site"],      "historyLimit": 50 } },
+      { "id": "inbox",      "name": "Inbox",            "soul": "./.agents/inbox/soul.md",         "groupChat": { "mentionPatterns": ["@inbox", "@mail"],          "historyLimit": 50 } },
+      { "id": "scheduler",  "name": "Scheduler",        "soul": "./.agents/scheduler/soul.md",     "groupChat": { "mentionPatterns": ["@scheduler", "@cal"],       "historyLimit": 50 } },
+      { "id": "coder",      "name": "Coder",            "soul": "./.agents/coder/soul.md",         "groupChat": { "mentionPatterns": ["@coder", "@code"],          "historyLimit": 50 },
+        "model": "anthropic/claude-opus-4-7",
+        "tools": { "alsoAllow": ["exec:claude-code"] }
+      },
+      { "id": "chat-coord", "name": "Chat Coordinator", "soul": "./.agents/chat-coord/soul.md",    "groupChat": { "mentionPatterns": ["@chat-coord", "@router"],   "historyLimit": 50 } }
+    ]
+  },
+  "tools": {
+    "deny": ["exec", "write"],
+    "register": [
+      {
+        "id": "claude-code",
+        "kind": "exec",
+        "description": "Delegate a coding task to Claude Code CLI. Input: free-text prompt. Output: JSON result.",
+        "command": "./tools/claude-code.sh",
+        "argv": ["${prompt}"],
+        "timeoutMs": 600000
+      }
+    ]
+  },
+  "channels": {
+    "cli": { "enabled": true },
+    "slack":    { "enabled": false, "extends": "./examples/openclaw.slack.json" },
+    "discord":  { "enabled": false, "extends": "./examples/openclaw.discord.json" },
+    "telegram": { "enabled": false, "extends": "./examples/openclaw.telegram.json" }
+  }
+}

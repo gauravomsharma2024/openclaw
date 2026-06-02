@@ -1,0 +1,21 @@
+{
+  "$schema": "https://docs.openclaw.ai/schema/openclaw.json",
+  "channels": {
+    "telegram": {
+      "enabled": false,
+      "groups": {
+        "REPLACE_CHAT_ID": {
+          "defaultAgent": "chat-coord",
+          "agents": ["chat-coord", "webmaster", "inbox", "scheduler", "coder"],
+          "requireMention": true,
+          "tools": { "deny": ["exec"] },
+          "toolsBySender": {
+            "id:REPLACE_YOUR_TELEGRAM_USER_ID": {
+              "alsoAllow": ["exec:claude-code"]
+            }
+          }
+        }
+      }
+    }
+  }
+}

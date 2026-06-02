@@ -1,0 +1,18 @@
+# Local state — never commit
+*.sqlite
+*.sqlite-journal
+*.log
+.openclaw-local/
+
+# Credentials — these belong in ~/.openclaw/credentials, not the repo
+credentials/
+*.credentials.json
+auth-profiles.json
+.env
+.env.*
+!.env.example
+
+# Editor noise
+.DS_Store
+.idea/
+.vscode/

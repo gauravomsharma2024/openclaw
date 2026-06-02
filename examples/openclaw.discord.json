@@ -1,0 +1,25 @@
+{
+  "$schema": "https://docs.openclaw.ai/schema/openclaw.json",
+  "channels": {
+    "discord": {
+      "enabled": false,
+      "guilds": {
+        "REPLACE_GUILD_ID": {
+          "defaultAgent": "chat-coord",
+          "channels": {
+            "REPLACE_CHANNEL_ID": {
+              "agents": ["chat-coord", "webmaster", "inbox", "scheduler", "coder"],
+              "requireMention": true,
+              "tools": { "deny": ["exec"] },
+              "toolsBySender": {
+                "id:REPLACE_YOUR_DISCORD_USER_ID": {
+                  "alsoAllow": ["exec:claude-code"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

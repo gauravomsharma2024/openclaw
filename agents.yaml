@@ -1,0 +1,51 @@
+# Agent manifest — registered with the gateway on `openclaw doctor --fix`.
+# Order matters for default routing precedence.
+version: 1
+root: claw
+
+agents:
+  - id: claw
+    name: "Claw"
+    role: coordinator
+    soul: ./soul.md
+    mention_patterns: ["@claw", "claw", "hey claw"]
+
+  - id: webmaster
+    name: "Webmaster"
+    role: specialist
+    soul: ./.agents/webmaster/soul.md
+    agent: ./.agents/webmaster/agent.md
+    user: ./.agents/webmaster/user.md
+    mention_patterns: ["@webmaster", "webmaster", "@site"]
+
+  - id: inbox
+    name: "Inbox"
+    role: specialist
+    soul: ./.agents/inbox/soul.md
+    agent: ./.agents/inbox/agent.md
+    user: ./.agents/inbox/user.md
+    mention_patterns: ["@inbox", "inbox", "@mail"]
+
+  - id: scheduler
+    name: "Scheduler"
+    role: specialist
+    soul: ./.agents/scheduler/soul.md
+    agent: ./.agents/scheduler/agent.md
+    user: ./.agents/scheduler/user.md
+    mention_patterns: ["@scheduler", "scheduler", "@cal"]
+
+  - id: coder
+    name: "Coder"
+    role: specialist
+    soul: ./.agents/coder/soul.md
+    agent: ./.agents/coder/agent.md
+    user: ./.agents/coder/user.md
+    mention_patterns: ["@coder", "coder", "@code"]
+
+  - id: chat-coord
+    name: "Chat Coordinator"
+    role: specialist
+    soul: ./.agents/chat-coord/soul.md
+    agent: ./.agents/chat-coord/agent.md
+    user: ./.agents/chat-coord/user.md
+    mention_patterns: ["@chat-coord", "@router"]
