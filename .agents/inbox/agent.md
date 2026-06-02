@@ -1,8 +1,10 @@
 # Inbox — Runtime
 
 ## Model
-- Primary: `anthropic/claude-sonnet-4-6` (fast triage)
-- For long drafting threads: escalate to `anthropic/claude-opus-4-7`.
+- Primary: `ollama/llama3.2:3b` (workspace default).
+- Triage classification on 3B is usable; multi-turn drafting will be rough.
+  Override per-task with `openclaw run inbox --model <bigger> "..."` when
+  drafting matters.
 
 ## Tools allowed
 - `gmail.search_threads`, `gmail.get_thread`, `gmail.list_labels`,

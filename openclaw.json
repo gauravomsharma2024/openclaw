@@ -2,21 +2,21 @@
   "$schema": "https://docs.openclaw.ai/schema/openclaw.json",
   "version": 1,
   "agent": {
-    "model": "anthropic/claude-opus-4-7",
-    "fallbackModel": "anthropic/claude-sonnet-4-6",
+    "model": "ollama/llama3.2:3b",
     "requireMention": true
   },
   "agents": {
     "list": [
-      { "id": "claw",       "name": "Claw",             "soul": "./soul.md",                       "groupChat": { "mentionPatterns": ["@claw", "claw"],            "historyLimit": 50 } },
-      { "id": "webmaster",  "name": "Webmaster",        "soul": "./.agents/webmaster/soul.md",     "groupChat": { "mentionPatterns": ["@webmaster", "@site"],      "historyLimit": 50 } },
-      { "id": "inbox",      "name": "Inbox",            "soul": "./.agents/inbox/soul.md",         "groupChat": { "mentionPatterns": ["@inbox", "@mail"],          "historyLimit": 50 } },
-      { "id": "scheduler",  "name": "Scheduler",        "soul": "./.agents/scheduler/soul.md",     "groupChat": { "mentionPatterns": ["@scheduler", "@cal"],       "historyLimit": 50 } },
-      { "id": "coder",      "name": "Coder",            "soul": "./.agents/coder/soul.md",         "groupChat": { "mentionPatterns": ["@coder", "@code"],          "historyLimit": 50 },
-        "model": "anthropic/claude-opus-4-7",
-        "tools": { "alsoAllow": ["exec:claude-code"] }
-      },
-      { "id": "chat-coord", "name": "Chat Coordinator", "soul": "./.agents/chat-coord/soul.md",    "groupChat": { "mentionPatterns": ["@chat-coord", "@router"],   "historyLimit": 50 } }
+      { "id": "claw",       "name": "Claw",             "soul": "./soul.md",                       "groupChat": { "mentionPatterns": ["@claw", "claw"],          "historyLimit": 50 } },
+      { "id": "webmaster",  "name": "Webmaster",        "soul": "./.agents/webmaster/soul.md",     "groupChat": { "mentionPatterns": ["@webmaster", "@site"],    "historyLimit": 50 } },
+      { "id": "inbox",      "name": "Inbox",            "soul": "./.agents/inbox/soul.md",         "groupChat": { "mentionPatterns": ["@inbox", "@mail"],        "historyLimit": 50 } },
+      { "id": "scheduler",  "name": "Scheduler",        "soul": "./.agents/scheduler/soul.md",     "groupChat": { "mentionPatterns": ["@scheduler", "@cal"],     "historyLimit": 50 } },
+      { "id": "chat-coord", "name": "Chat Coordinator", "soul": "./.agents/chat-coord/soul.md",    "groupChat": { "mentionPatterns": ["@chat-coord", "@router"], "historyLimit": 50 } }
+    ],
+    "disabled": [
+      { "id": "coder", "reason": "Requires Claude Code CLI + Anthropic API key. Files kept under .agents/coder/ for when an Anthropic key is added. To enable: append the entry below to agents.list, install claude CLI, set ANTHROPIC_API_KEY, then `openclaw doctor --fix`.",
+        "entry": { "id": "coder", "name": "Coder", "soul": "./.agents/coder/soul.md", "model": "anthropic/claude-opus-4-7", "groupChat": { "mentionPatterns": ["@coder", "@code"], "historyLimit": 50 }, "tools": { "alsoAllow": ["exec:claude-code"] } }
+      }
     ]
   },
   "tools": {
@@ -25,10 +25,11 @@
       {
         "id": "claude-code",
         "kind": "exec",
-        "description": "Delegate a coding task to Claude Code CLI. Input: free-text prompt. Output: JSON result.",
+        "description": "Delegate a coding task to Claude Code CLI. Only used by the (currently disabled) coder agent.",
         "command": "./tools/claude-code.sh",
         "argv": ["${prompt}"],
-        "timeoutMs": 600000
+        "timeoutMs": 600000,
+        "enabled": false
       }
     ]
   },

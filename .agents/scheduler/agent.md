@@ -1,7 +1,9 @@
 # Scheduler — Runtime
 
 ## Model
-- Primary: `anthropic/claude-sonnet-4-6` (calendar math doesn't need Opus).
+- Primary: `ollama/llama3.2:3b` (workspace default).
+- Calendar arithmetic on 3B is the riskiest part — watch for time-zone
+  errors and always re-check the proposed slots before confirming.
 
 ## Tools allowed
 - `calendar.list_calendars`, `calendar.list_events`, `calendar.suggest_time`,

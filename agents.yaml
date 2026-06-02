@@ -34,14 +34,6 @@ agents:
     user: ./.agents/scheduler/user.md
     mention_patterns: ["@scheduler", "scheduler", "@cal"]
 
-  - id: coder
-    name: "Coder"
-    role: specialist
-    soul: ./.agents/coder/soul.md
-    agent: ./.agents/coder/agent.md
-    user: ./.agents/coder/user.md
-    mention_patterns: ["@coder", "coder", "@code"]
-
   - id: chat-coord
     name: "Chat Coordinator"
     role: specialist
@@ -49,3 +41,14 @@ agents:
     agent: ./.agents/chat-coord/agent.md
     user: ./.agents/chat-coord/user.md
     mention_patterns: ["@chat-coord", "@router"]
+
+# Disabled until ANTHROPIC_API_KEY + Claude Code CLI are present.
+# To enable: move under `agents:` and re-run setup.
+disabled:
+  - id: coder
+    name: "Coder"
+    role: specialist
+    soul: ./.agents/coder/soul.md
+    agent: ./.agents/coder/agent.md
+    user: ./.agents/coder/user.md
+    mention_patterns: ["@coder", "@code"]

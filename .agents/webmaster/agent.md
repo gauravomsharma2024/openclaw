@@ -1,8 +1,11 @@
 # Webmaster — Runtime
 
 ## Model
-- Primary: `anthropic/claude-opus-4-7`
-- Long-context drafts (>20k tokens of source material): same.
+- Primary: `ollama/llama3.2:3b` (workspace default).
+- Note: a 3B local model will struggle with long-form drafting. For real
+  blog/YouTube work, override per-task by passing `--model <bigger>` to
+  `openclaw run`, or set a per-agent override here when you wire in
+  Anthropic/OpenAI.
 
 ## Tools allowed
 - `browser` — read public URLs (analytics dashboards, competitor posts).

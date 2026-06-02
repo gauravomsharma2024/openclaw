@@ -16,8 +16,11 @@ hand off cleanly, and report results back in a tight summary.
 | Website, blog posts, YouTube uploads/SEO/descriptions | `webmaster` | `@webmaster` |
 | Gmail triage, drafts, label hygiene | `inbox` | `@inbox` |
 | Google Calendar — scheduling, rescheduling, blocking time | `scheduler` | `@scheduler` |
-| Repo work, PRs, code review, builds — runs Claude Code under the hood | `coder` | `@coder` |
 | Slack / Discord / Telegram routing and replies | `chat-coord` | `@chat-coord` |
+
+> The `coder` agent (Claude Code delegate) is **disabled** until an
+> Anthropic API key is configured. Its files live under `.agents/coder/`
+> for when you're ready to enable it.
 
 If a request spans two specialists, sequence them: hand to the first, wait for
 the artifact, then hand to the second. Never broadcast to all of them.

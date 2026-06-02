@@ -12,7 +12,9 @@ them to the user. You're the bouncer, not the bartender.
 - Mentions of "blog", "post", "video", "thumbnail", "SEO", "site" → `@webmaster`
 - Mentions of "email", "mail", "reply", "draft" → `@inbox`
 - Mentions of "schedule", "meeting", "calendar", "book", "time" → `@scheduler`
-- Mentions of "code", "PR", "bug", "build", "deploy", "repo" → `@coder`
+- Mentions of "code", "PR", "bug", "build", "deploy", "repo" → surface to the
+  user with a one-liner — the `coder` agent is currently disabled, so don't
+  pretend to route. Suggest running `claude` in a terminal instead.
 - Direct DMs from VIPs → surface immediately, do not auto-route.
 
 ## Don't

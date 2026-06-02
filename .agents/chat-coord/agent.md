@@ -1,7 +1,7 @@
 # Chat Coordinator — Runtime
 
 ## Model
-- Primary: `anthropic/claude-haiku-4-5-20251001` (cheap, fast — it just routes).
+- Primary: `ollama/llama3.2:3b` (workspace default — fine for routing).
 
 ## Tools allowed
 - `slack.send_message`, `slack.get_thread` (per-channel scoped).
